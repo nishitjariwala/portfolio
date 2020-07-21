@@ -146,16 +146,22 @@ body{
 body {
   background: #444;
   
-  height: 100%;
+  
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5; }
   
   body#bg-img {
     background: url(../img/background.jpg);
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(../img/background.jpg);
+
     background-attachment: fixed;
     background-size: cover;
-    height: 100vh; }
+     }
+     body#bg-img ::after{
+      background: black;
+      opacity: 0.8;
+      }
     #home{
       height: 100vh;
       text-align: right;
@@ -168,8 +174,7 @@ body {
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: black;
-    opacity: 0.8; }
+    }
 
 
       #about{
@@ -405,14 +410,15 @@ main {
 
 @media screen and (max-width: 500px) {
   main {
-    padding: 2rem; }
+    padding: 1rem; }
     main #home h1 {
-      margin-top: 10vh; }
+      margin-top: -5vh; }
     main .lg-heading {
       margin-top: 1rem;
       font-size: 5rem; }
   .projects {
-    grid-template-columns: 1fr; } }
+    grid-template-columns: 1fr; } 
+  }
 
     @media screen and (max-width: 600px) {
       .menu-btn.close{
@@ -420,15 +426,25 @@ main {
         margin-top: 100%;
         display: none;
       }
+      .card:hover .content{
+        overflow-y: auto;
+      }
+      
     } 
 
 
     /* Work Card */
+    #work .show{
+      transition: 5s ease-out;
+
+    }
     .card{
       position: relative;
       width: 98%;
       height: 270px;
-      transition: 0.5s ease-out;
+      transition: 5s ease-out;
+      /* transition: all 2s ease-in-out; */
+
       box-shadow: 0 3px 15px rgba(0,0,0,0.7);
       cursor: pointer;
 
@@ -469,7 +485,10 @@ main {
       width: 100%;
       height: 75%;
       left: 0;
-      border-top-right-radius: 50%;
+      border-top-right-radius: 30%;
+      scroll-behavior: smooth;
+      overflow-y: auto;
+      /* overflow: scroll; */
 
     }
     .card:hover img {
@@ -479,6 +498,31 @@ main {
     .githun_btn{
       color: #c4c4c4;
     }
+    .item{
+      transition: all 2s ease-in-out;
+    }
+
+    /* ScrollBar */
+    /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eece1a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: red;
+  cursor: alias;
+}
 
 
     /* contact form css */
@@ -792,4 +836,70 @@ main {
 
 .project_grid{
   display: grid;
+}
+
+
+#vue div h2{
+  text-align: center;
+  width: 100%;
+}
+#vue div{
+  display: flex;
+  width: 100%;
+  border: 5px solid red;
+  padding: 25px;
+}
+
+/* LOADER */
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding-top: 40vh;
+  
+}
+.preloader
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: black;
+    z-index: 999;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  
+  text-align: center;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 80px solid #eece1a;
+  border-color: red transparent red transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+.imgbox img{
+  height: 250px;
 }
